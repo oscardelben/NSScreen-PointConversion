@@ -1,0 +1,21 @@
+When working with multiple screens and mouse location in Cocoa you have to go through converting the point coordinates to the current screen coordinates.
+
+For example if you have a second monitor on the left and you want to get the mouse position relative to that screen, [NSEvent mousePosition] will return something like (-1200, 130), which is often not what you want. This class provides three simple methods to simplify conversion of points to the current screen coordinates:
+
+    /* 
+     Returns the screen where the mouse resides
+    */
+    + (NSScreen *)currentScreenForMouseLocation;
+
+    /*
+     Allows you to convert a point from global coordinates to the current screen coordinates.
+    */
+    - (NSPoint)convertPointToScreenCoordinates:(NSPoint)aPoint;
+
+    /*
+     Allows to flip the point coordinates, so y is 0 at the top instead of the bottom. x remains the same
+    */
+    - (NSPoint)flipPoint:(NSPoint)aPoint;
+
+
+License: MIT
